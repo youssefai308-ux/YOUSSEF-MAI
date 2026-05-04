@@ -3,15 +3,15 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>💖 Our Secret 💖</title>
+<title>💖 For Mai 💖</title>
 
 <style>
 body {
   margin: 0;
-  font-family: 'Arial';
-  background: linear-gradient(135deg, #ffd6e0, #ffeef2);
+  font-family: Arial;
+  background: linear-gradient(135deg, #0f0f0f, #1f1f1f);
+  color: white;
   text-align: center;
-  overflow-x: hidden;
 }
 
 .container {
@@ -23,15 +23,14 @@ h1 {
 }
 
 p {
-  color: #444;
-  font-size: 18px;
+  font-size: 20px;
+  color: #ddd;
 }
 
 input {
   padding: 12px;
   border-radius: 20px;
   border: none;
-  outline: none;
 }
 
 button {
@@ -41,6 +40,7 @@ button {
   background: #ff4d6d;
   color: white;
   cursor: pointer;
+  margin: 10px;
   transition: 0.3s;
 }
 
@@ -53,10 +53,16 @@ button:hover {
 }
 
 .gallery img {
-  width: 180px;
+  width: 200px;
   border-radius: 20px;
   margin: 10px;
-  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+#gift {
+  margin-top: 20px;
+  font-size: 22px;
+  color: #ff9bb3;
+  display: none;
 }
 
 .heart {
@@ -70,15 +76,6 @@ button:hover {
   0% { transform: translateY(0); opacity: 1; }
   100% { transform: translateY(-800px); opacity: 0; }
 }
-
-.fade {
-  animation: fadeIn 2s ease;
-}
-
-@keyframes fadeIn {
-  from {opacity: 0;}
-  to {opacity: 1;}
-}
 </style>
 
 </head>
@@ -86,18 +83,17 @@ button:hover {
 <body>
 
 <div class="container" id="login">
-  <h2>Enter Our Secret Password 💕</h2>
-  <input type="password" id="pass" placeholder="Secret here...">
+  <h2>Enter Password 💕</h2>
+  <input type="password" id="pass" placeholder="Password">
   <br><br>
   <button onclick="check()">Enter 💖</button>
 </div>
 
-<div class="container hidden fade" id="content">
-  <h1>Hey My Favorite Person 💘</h1>
+<div class="container hidden" id="content">
+  <h1>To My Love Mai 💘</h1>
 
   <p>
-    اكتبي هنا رسالتك ✨  
-    (مثال: وجودك في حياتي أحلى صدفة حصلتلي 💖)
+    انتي نور عيني يا مي من حبيبك يوسف 💖
   </p>
 
   <div class="gallery">
@@ -111,13 +107,22 @@ button:hover {
   <audio controls autoplay loop>
     <source src="song.mp3" type="audio/mpeg">
   </audio>
+
+  <br>
+
+  <button onclick="showGift()">🎁 ادخل خد هديتك</button>
+
+  <div id="gift">
+    بحبك يا مي 💕
+  </div>
+
 </div>
 
 <script>
 function check(){
   var password = document.getElementById("pass").value;
 
-  if(password === "1234"){ // غير الباسورد هنا
+  if(password === "308"){
     document.getElementById("login").style.display = "none";
     document.getElementById("content").classList.remove("hidden");
     startHearts();
@@ -126,14 +131,16 @@ function check(){
   }
 }
 
-// قلوب بتطلع لفوق
+function showGift(){
+  document.getElementById("gift").style.display = "block";
+}
+
 function startHearts(){
   setInterval(() => {
     let heart = document.createElement("div");
     heart.className = "heart";
     heart.innerHTML = "💖";
     heart.style.left = Math.random() * 100 + "vw";
-    heart.style.fontSize = (Math.random() * 20 + 10) + "px";
     document.body.appendChild(heart);
 
     setTimeout(() => {
@@ -145,4 +152,3 @@ function startHearts(){
 
 </body>
 </html>
-if(password === "308")
