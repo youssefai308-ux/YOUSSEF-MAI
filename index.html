@@ -41,21 +41,21 @@ button {
   color: white;
   cursor: pointer;
   margin: 10px;
-  transition: 0.3s;
-}
-
-button:hover {
-  background: #ff3355;
 }
 
 .hidden {
   display: none;
 }
 
-.gallery img {
-  width: 200px;
+.slider img {
+  width: 250px;
   border-radius: 20px;
-  margin: 10px;
+  display: none;
+  margin: auto;
+}
+
+.slide.active {
+  display: block;
 }
 
 #gift {
@@ -96,20 +96,27 @@ button:hover {
     انتي نور عيني يا مي من حبيبك يوسف 💖
   </p>
 
-  <div class="gallery">
-    <img src="photo1.jpg">
-    <img src="photo2.jpg">
-    <img src="photo3.jpg">
+  <!-- سلايدر الصور -->
+  <div class="slider">
+    <img class="slide active" src="Snapchat-1592571296.jpg">
+    <img class="slide" src="IMG_20260416_165306_893.jpg">
+    <img class="slide" src="IMG_20260113_162916_851.jpg">
+
+    <br>
+    <button onclick="prevSlide()">⬅️</button>
+    <button onclick="nextSlide()">➡️</button>
   </div>
 
   <br>
 
+  <!-- الأغنية -->
   <audio controls autoplay loop>
     <source src="song.mp3" type="audio/mpeg">
   </audio>
 
   <br>
 
+  <!-- زرار الهدية -->
   <button onclick="showGift()">🎁 ادخل خد هديتك</button>
 
   <div id="gift">
@@ -135,6 +142,30 @@ function showGift(){
   document.getElementById("gift").style.display = "block";
 }
 
+// سلايدر
+let current = 0;
+let slides = document.getElementsByClassName("slide");
+
+function showSlide(index){
+  for(let i = 0; i < slides.length; i++){
+    slides[i].classList.remove("active");
+  }
+  slides[index].classList.add("active");
+}
+
+function nextSlide(){
+  current = (current + 1) % slides.length;
+  showSlide(current);
+}
+
+function prevSlide(){
+  current = (current - 1 + slides.length) % slides.length;
+  showSlide(current);
+}
+
+setInterval(nextSlide, 3000);
+
+// قلوب
 function startHearts(){
   setInterval(() => {
     let heart = document.createElement("div");
