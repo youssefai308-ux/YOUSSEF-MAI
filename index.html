@@ -110,7 +110,7 @@ button {
   <br>
 
   <!-- الأغنية -->
-  <audio controls autoplay loop>
+  <audio id="music" loop>
     <source src="song.mp3" type="audio/mpeg">
   </audio>
 
@@ -132,17 +132,23 @@ function check(){
   if(password === "308"){
     document.getElementById("login").style.display = "none";
     document.getElementById("content").classList.remove("hidden");
+
+    // تشغيل الأغنية
+    var music = document.getElementById("music");
+    music.play();
+
     startHearts();
   } else {
     alert("Wrong password 😢");
   }
 }
 
+// زرار الهدية
 function showGift(){
   document.getElementById("gift").style.display = "block";
 }
 
-// سلايدر
+// سلايدر الصور
 let current = 0;
 let slides = document.getElementsByClassName("slide");
 
@@ -165,7 +171,7 @@ function prevSlide(){
 
 setInterval(nextSlide, 3000);
 
-// قلوب
+// قلوب طايرة
 function startHearts(){
   setInterval(() => {
     let heart = document.createElement("div");
